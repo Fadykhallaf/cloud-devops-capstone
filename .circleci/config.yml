@@ -29,7 +29,25 @@ jobs:
           name: linting
           command: |
             . venv/bin/activate
-            make lint
+            make 
+      
+  build-docker-image:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: capstone docker image
+          command: |
+            docker build --tag=capstone .
+            docker images ls
+      - run:
+          name: push to dockerhub
+          command: |
+            dockerpath="fadykhallaf/capstone:latest"
+            docker tag capstone:latest $dockerpath
+            echo "Docker ID and Image: $dockerpath"
+            echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+            docker image push $dockerpath
 
 workflows:
     default:
