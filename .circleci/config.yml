@@ -29,7 +29,7 @@ jobs:
           name: linting
           command: |
             . venv/bin/activate
-            make 
+            make lint
       
   build-docker-image:
     machine: true
@@ -53,3 +53,5 @@ workflows:
     default:
         jobs:
           - lint
+          - builld-docker-image:
+              requires: [lint]
