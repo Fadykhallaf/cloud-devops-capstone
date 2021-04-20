@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   lint:
     docker:
@@ -33,7 +34,7 @@ jobs:
             . venv/bin/activate
             make lint
 
-workflows:
-  default:
-    jobs:
-      - lint
+  workflows:
+    default:
+      jobs:
+        - lint

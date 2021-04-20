@@ -2,6 +2,7 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
+lintfail
 def udacity_capstone():
     return 'Ready To Celebrate'
 
