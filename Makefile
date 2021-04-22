@@ -18,4 +18,9 @@ lint:
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203 app.py
 
+test:
+	# flask run
+	pytest
+	
+
 all: install lint
