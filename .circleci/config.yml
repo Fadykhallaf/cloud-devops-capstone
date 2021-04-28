@@ -100,8 +100,8 @@ workflows:
                   resource-types: deployment
                   wait: true
               record: true
-              requires:
-                - create-deployment
+              #requires:
+               # - create-deployment
               resource-name: deployment/cloud-devops-capstone
           - aws-eks/delete-cluster:
               cluster-name: capstone
