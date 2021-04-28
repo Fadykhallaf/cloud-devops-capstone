@@ -105,5 +105,6 @@ workflows:
               resource-name: deployment/cloud-devops-capstone
           - aws-eks/delete-cluster:
               cluster-name: capstone
+              aws-region: us-east-1
               requires:
                 - aws-eks/update-container-image
