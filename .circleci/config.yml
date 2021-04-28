@@ -96,9 +96,9 @@ workflows:
               container-image-updates: 'capstone=capstone:latest'
               post-steps:
                 - kubernetes/delete-resource:
-                  resource-names: cloud-devops-capstone
-                  resource-types: deployment
-                  wait: true
+                    resource-names: cloud-devops-capstone
+                    resource-types: deployment
+                    wait: true
               record: true
               #requires:
                # - create-deployment
