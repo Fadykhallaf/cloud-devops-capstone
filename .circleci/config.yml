@@ -61,9 +61,10 @@ jobs:
           Name of the EKS cluster
         type: string
       aws-region:
+        default: 'us-east-1'
         description: |
-          aws region
-        type: string
+          AWS region that the EKS cluster will be created in.
+      type: string
     steps:
       - checkout
       - aws-eks/update-kubeconfig-with-authenticator:
@@ -77,17 +78,17 @@ jobs:
 workflows:
     default:
         jobs:
-          - lint
-          - build-docker-image:
-              requires: [lint]
-          - aws-eks/create-cluster:
-              cluster-name: capstone
-              aws-region: ${AWS_REGION}
+          # - lint
+          # - build-docker-image:
+              # requires: [lint]
+          # - aws-eks/create-cluster:
+              # cluster-name: capstone
+              # aws-region: ${AWS_REGION}
           - create-deployment:
               cluster-name: capstone
-              aws-region: ${AWS_REGION}
-              requires:
-                - aws-eks/create-cluster
+              aws-region: us-east-1
+              # requires:
+                # - aws-eks/create-cluster
           - aws-eks/update-container-image:
               cluster-name: capstone
               container-image-updates: 'capstone=capstone:latest'
