@@ -73,7 +73,7 @@ jobs:
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
-          resource-file-path: /home/circleci/deployment.yaml
+          resource-file-path: ~/deployment.yaml
           resource-name: deployment/cloud-devops-capstone
   
 workflows:
