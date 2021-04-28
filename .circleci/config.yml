@@ -64,7 +64,7 @@ jobs:
         default: 'us-east-1'
         description: |
           AWS region that the EKS cluster will be created in.
-      type: string
+        type: string
     steps:
       - checkout
       - aws-eks/update-kubeconfig-with-authenticator:
