@@ -100,17 +100,17 @@ jobs:
 workflows:
     default:
         jobs:
-          - lint
-          - build-docker-image:
-              requires: [lint]
-          - aws-eks/create-cluster:
-              cluster-name: capstone
-              aws-region: ${AWS_REGION}
-          - create-deployment:
-             cluster-name: capstone
-             aws-region: us-east-1
-             requires:
-               - aws-eks/create-cluster
+          # - lint
+          # - build-docker-image:
+          #     requires: [lint]
+          # - aws-eks/create-cluster:
+          #     cluster-name: capstone
+          #     aws-region: ${AWS_REGION}
+          # - create-deployment:
+          #    cluster-name: capstone
+          #    aws-region: us-east-1
+          #    requires:
+          #      - aws-eks/create-cluster
           # - aws-eks/update-container-image:
           #     cluster-name: capstone
           #     aws-region: us-east-1
@@ -124,13 +124,13 @@ workflows:
           #     requires:
           #      - create-deployment
           #     resource-name: deployment/cloud-devops-capstone
-          - test-cluster:
-              cluster-name: capstone
-              aws-region: us-east-1
-              requires:
-                - create-deployment
-          # - aws-eks/delete-cluster:
+          # - test-cluster:
           #     cluster-name: capstone
           #     aws-region: us-east-1
           #     requires:
-          #       - test-cluster
+          #       - create-deployment
+          - aws-eks/delete-cluster:
+              cluster-name: capstone
+              aws-region: us-east-1
+              # requires:
+                # - test-cluster
